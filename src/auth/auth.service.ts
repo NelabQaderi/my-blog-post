@@ -54,4 +54,40 @@ export class AuthService {
       newData,
     };
   }
+
+  async deleteUser(email: string) {
+    const UserData = await this.authRepository.findOne({
+      where: { email: email },
+    });
+
+    if (!UserData) {
+      return {
+        message: 'User not found',
+      };
+    }
+
+    await this.authRepository.delete(UserData.id);
+
+    return {
+      message: 'User deleted successfully',
+    };
+  }
+
+  async softDeleteUser(email: string) {
+    const UserData = await this.authRepository.findOne({
+      where: { email: email },
+    });
+
+    if (!UserData) {
+      return {
+        message: 'User not found',
+      };
+    }
+
+    await this.authRepository.softDelete(UserData.id);
+
+    return {
+      message: 'User deleted successfully',
+    };
+  }
 }

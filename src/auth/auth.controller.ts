@@ -38,4 +38,14 @@ export class AuthController {
   ) {
     return this.authService.updateUser(email, updateAuthDto);
   }
+
+  @Delete('delete_user/:email')
+  deleteUser(@Param('email') email: string) {
+    return this.authService.deleteUser(email);
+  }
+
+  @Delete('soft-delete_user/:email')
+  softDeleteUser(@Param('email') email: string) {
+    return this.authService.softDeleteUser(email);
+  }
 }
