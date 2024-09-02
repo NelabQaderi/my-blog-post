@@ -5,7 +5,7 @@ export const NestDataSource = {
   host: 'localhost',
   port: 5432,
   username: 'postgres',
-  password: '123456789',
+  password: 'starkbakpostgresql',
   database: 'blogpost',
   entities: [__dirname + '/../**/*.entity{.js,.ts}'],
   migrations: [__dirname + '/migrations/*'],
