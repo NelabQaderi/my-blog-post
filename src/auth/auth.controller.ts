@@ -26,20 +26,24 @@ export class AuthController {
     return this.authService.login(createAuthDto);
   }
 
-  @Get('search_user/:email')
-  searchUser(@Param('email') email: string) {
-    return this.authService.searchUser(email);
+  @Get('search_user/:email/:username')
+  searchUser(
+    @Param('email') email: string,
+    @Param('username') username: string,
+  ) {
+    return this.authService.searchUser(email, username);
   }
 
   @Put('update_ueser/:email')
   updateUser(
     @Param('email') email: string,
+    @Param('username') username: string,
     @Body() updateAuthDto: UpdateAuthDto,
   ) {
-    return this.authService.updateUser(email, updateAuthDto);
+    return this.authService.updateUser(email, username, updateAuthDto);
   }
 
-  @Delete('delete_user/:email')
+  @Delete('delete_user/:email ')
   deleteUser(@Param('email') email: string) {
     return this.authService.deleteUser(email);
   }

@@ -19,9 +19,9 @@ export class AuthService {
       user: newUsuer,
     };
   }
-  async searchUser(email: string) {
+  async searchUser(email: string, username: string) {
     const GetUsuerData = await this.authRepository.findOne({
-      where: { email: email },
+      where: { email: email, username: username },
     });
 
     if (!GetUsuerData) {
@@ -33,9 +33,13 @@ export class AuthService {
       user: GetUsuerData,
     };
   }
-  async updateUser(email: string, updateUserDto: UpdateAuthDto) {
+  async updateUser(
+    email: string,
+    username: string,
+    updateUserDto: UpdateAuthDto,
+  ) {
     const UserData = await this.authRepository.findOne({
-      where: { email: email },
+      where: { email: email, username: username },
     });
 
     if (!UserData) {
